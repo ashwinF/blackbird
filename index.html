@@ -1,152 +1,422 @@
-<!DOCTYPE HTML>
-<!--
-	Read Only by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Ashwin Aravind - Home Page</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-	</head>
-	<body>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ashwin Aravind</title>
+<meta name="description" content="Ashwin Aravind — Researcher at Fujitsu Research working at the intersection of learning, optimization and control.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f5f0; --surface:#ffffff; --ink:#1b1d22; --muted:#5d6270; --faint:#8a8f9c;
+  --line:#e3dfd6; --accent:#1f5f8b; --accent-soft:#e3edf5; --field:rgba(31,95,139,.18);
+  --serif:"Newsreader",Georgia,serif; --sans:"Inter",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121418; --surface:#1a1d23; --ink:#e8e6e1; --muted:#a2a7b3; --faint:#737986;
+    --line:#2a2e36; --accent:#7fb6dd; --accent-soft:#1d2a36; --field:rgba(127,182,221,.16);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121418; --surface:#1a1d23; --ink:#e8e6e1; --muted:#a2a7b3; --faint:#737986;
+  --line:#2a2e36; --accent:#7fb6dd; --accent-soft:#1d2a36; --field:rgba(127,182,221,.16);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
 
-		<!-- Header -->
-			<section id="header">
-				<header>
-					<span class="image avatar"><img src="images/avatar.jpg" alt="" /></span>
-					<h1 id="logo"><a href="#">Ashwin Aravind</a></h1>
-					<p>"Dream is not the thing you see in sleep but is that thing that doesn't let you sleep" - Dr. A.P.J Abdul Kalam</p>
-				</header>
-				<nav id="nav">
-					<ul>
-						<li><a href="#one" class="active">About me</a></li>
-						<li><a href="#two">Courses done</a></li>
-						<li><a href="#three">Projects</a></li>
-						<li><a href="#four">Contact</a></li>
-					</ul>
-				</nav>
-				<footer>
-					<ul class="icons">
-						<!--<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li> -->
-						<li><a href="https://www.facebook.com/flankerH30" class="icon fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
-						<!--<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li> -->
-						<li><a href="https://github.com/ashwinF" class="icon fa-github" target="_blank"><span class="label">Github</span></a></li>
-						<li><a href="https://www.linkedin.com/in/ashwin-aravind-0302729b/" class="icon fa-linkedin" target="_blank"><span class="label">Linkedin</span></a></li>
-					</ul>
-				</footer>
-			</section>
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-family:var(--serif);font-size:1.2rem;color:var(--ink);font-weight:500}
+.brand:hover{text-decoration:none}
+.links{display:flex;gap:22px;align-items:center;font-size:.9rem}
+.links a{color:var(--muted)}
+.links a:hover{color:var(--ink);text-decoration:none}
+#theme{background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;width:34px;height:34px;cursor:pointer;display:grid;place-items:center}
+#theme:hover{color:var(--ink)}
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+/* hero */
+header.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+#field{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero .wrap{position:relative;padding-top:96px;padding-bottom:88px}
+.hero-grid{display:grid;grid-template-columns:1fr 220px;gap:48px;align-items:center}
+.avatar{width:220px;height:220px;border-radius:50%;object-fit:cover;object-position:50% 30%;border:4px solid var(--surface);box-shadow:0 0 0 1px var(--line),0 12px 32px rgba(0,0,0,.12)}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,7vw,4.4rem);line-height:1.05;margin:14px 0 18px;letter-spacing:-.01em}
+.lede{font-family:var(--serif);font-size:clamp(1.15rem,2.4vw,1.4rem);line-height:1.5;color:var(--muted);max-width:640px;margin:0}
+.lede em{color:var(--ink)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:.9rem;font-weight:500}
+.btn:hover{text-decoration:none;border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.btn svg{width:16px;height:16px}
 
-				<!-- Main -->
-					<div id="main">
+/* sections */
+section{padding:80px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:200px 1fr;gap:32px}
+h2{font-family:var(--serif);font-weight:400;font-size:1.9rem;margin:0;line-height:1.2}
+.sec-num{font-family:var(--mono);font-size:.75rem;color:var(--faint);display:block;margin-bottom:6px}
+.prose p{margin:0 0 1em;color:var(--muted)}
+.prose p:first-child{color:var(--ink);font-size:1.08rem}
 
-						<!-- One -->
-							<section id="one">
-								<div class="container">
-									<header class="major">
-										<h2>About me</h2>
-										<!--<p>Just an incredibly simple responsive site<br />
-										template freebie by <a href="http://html5up.net">HTML5 UP</a>.</p> -->
-									</header>
-									<p align="justify">I completed my BTech in Electrical and Electronics engineering from <a style= "color:blue" href="http://www.cet.ac.in/">College of Engineering,
-									Thiruvananthapuram </a> and joined MRF ltd as Electrical Engineer. During my stay at MRF 
-								    I developed interest towards control systems. I am currently pursuing my MTech in <a style= "color:blue" href="http://www.sc.iitb.ac.in/"> Systems 
-									and Control engineering </a> at <a style="color:blue" href="http://www.iitb.ac.in/">  Indian Institute of Technology, Bombay </a>.</p>
-								</div>
-							</section>
- 
-						<!-- Two -->
-							<section id="two">
-								<div class="container">
-									<h3>Courses done</h3>
-									<p>Following are some courses I have completed during my Bachelor and Master degrees.</p>
-									<ul class="feature-icons">
-										<li class="fa-braille">Introduction to Probability and Random Processes</li>
-										<li class="fa-rocket">Geometric and Analytic Aspects of Optimal Control</li>
-										<li class="fa-random">Variable Structure and Sliding Mode Control</li>
-										<li class="fa-line-chart">Optimization</li>
-										<li class="fa-cogs">Control of Nonlinear Dynamical Systems</li>
-										<li class="fa-sitemap">Automation and Feedback Control</li>
-										<li class="fa-magnet">Electrical Machines</li>
-										<li class="fa-bolt">Power Systems</li>
-										<li class="fa-android">Embedded Systems</li>
-										<li class="fa-lightbulb-o">Power Electronics</li>
-										<li class="fa-desktop">Digital Electronics and Logic Design</li>
-										<li class="fa-mobile">Solid State Devices and Circuits</li>
-									</ul>
-								</div>
-							</section>
+.themes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.theme{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px}
+.theme h3{font-family:var(--serif);font-weight:500;font-size:1.15rem;margin:10px 0 6px}
+.theme p{margin:0;color:var(--muted);font-size:.92rem}
+.theme svg{width:28px;height:28px;color:var(--accent)}
 
-						<!-- Three -->
-							<section id="three">
-								<div class="container">
-									<h3>Projects</h3>
-									<p></p>
-									<div class="features">
-										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Realtime dynamic obstacle avoidance for mobile robot</h4>
-												<p>A realtime algorithm based on relative velocity between the robot and an obstacle in its path was designed and implemented on a Firebird 6 robot.</p>
-											</div>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Exofly</h4>
-												<p>The objective of this project is to create an economical aerial vehical that can be used as a personal transport at short distances.</p>
-											</div>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Stochastic approximation</h4>
-												<p>Guide : Prof.<a style="color:blue" href="http://www.sc.iitb.ac.in/~chatterjee/"> Debasish Chatterjee</a> </p>
-											</div>
-										</article>
-									</div>
-								</div>
-							</section>
+/* news / now */
+.now{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:28px}
+.now div{background:var(--surface);padding:18px}
+.now b{display:block;font-family:var(--serif);font-weight:500;font-size:1.6rem;line-height:1.1}
+.now span{font-size:.82rem;color:var(--muted)}
 
-						<!-- Four -->
-							<section id="four">
-								<div class="container">
-									<h3>Contact Me</h3>
-										<h3 class="icon fa-envelope-o"><span class="label">Email</span></h3>
-										ashwinaravind1@gmail.com<br />
-										ashwin@sc.iitb.in<br/>
-								</div>
-							</section>
+/* publications */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.filters button{font:500 .85rem var(--sans);padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pub{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:20px 0;border-top:1px solid var(--line)}
+.pub:first-of-type{border-top:0}
+.pub .yr{font-family:var(--mono);font-size:.85rem;color:var(--faint);padding-top:3px}
+.pub h3{font-family:var(--serif);font-weight:500;font-size:1.15rem;line-height:1.35;margin:0 0 4px}
+.pub h3 a{color:var(--ink)}
+.pub h3 a:hover{color:var(--accent)}
+.authors{font-size:.9rem;color:var(--muted);margin:0}
+.authors b{color:var(--ink);font-weight:600}
+.venue{font-size:.9rem;font-style:italic;font-family:var(--serif);color:var(--muted);margin:2px 0 0}
+.tag{display:inline-block;font:500 .7rem var(--mono);text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:4px;background:var(--accent-soft);color:var(--accent);margin-right:6px;vertical-align:2px}
+details{margin-top:8px}
+summary{cursor:pointer;font-size:.82rem;color:var(--accent);list-style:none;display:inline-block}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+ ";font-family:var(--mono)}
+details[open] summary::before{content:"− "}
+details p{margin:8px 0 0;font-size:.92rem;color:var(--muted);max-width:640px}
 
+/* timeline */
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:16px 0;border-top:1px solid var(--line)}
+.tl li:first-child{border-top:0}
+.tl .when{font-family:var(--mono);font-size:.8rem;color:var(--faint);padding-top:4px}
+.tl h3{margin:0;font-size:1rem;font-weight:600}
+.tl p{margin:2px 0 0;color:var(--muted);font-size:.93rem}
+.sub{font-family:var(--mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);margin:36px 0 8px}
+.sub:first-child{margin-top:0}
 
-					</div>
+/* projects */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px}
+.card .meta{font-family:var(--mono);font-size:.75rem;color:var(--faint)}
+.card h3{font-family:var(--serif);font-weight:500;font-size:1.12rem;margin:6px 0 8px;line-height:1.3}
+.card p{margin:0;color:var(--muted);font-size:.92rem}
+.minor{margin-top:20px;color:var(--muted);font-size:.92rem}
+.minor ul{columns:2;column-gap:32px;padding-left:18px;margin:8px 0 0}
+.minor li{break-inside:avoid;margin-bottom:4px}
 
-				<!-- Footer -->
-					<section id="footer">
-						<div class="container">
-							<ul class="copyright">
-								<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</section>
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.list{list-style:none;padding:0;margin:0}
+.list li{padding:10px 0;border-top:1px solid var(--line);font-size:.93rem;color:var(--muted)}
+.list li:first-child{border-top:0}
+.list b{color:var(--ink);font-weight:600}
 
-			</div>
+/* contact */
+.contact{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.contact a.card:hover{text-decoration:none;border-color:var(--accent)}
+.contact .card h3{color:var(--ink)}
+footer{padding:36px 0 48px;font-size:.82rem;color:var(--faint)}
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollzer.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+@media (max-width:760px){
+  .links a{display:none}
+  .sec-head{grid-template-columns:1fr;gap:20px}
+  .themes,.cards,.two,.contact{grid-template-columns:1fr}
+  .now{grid-template-columns:repeat(2,1fr)}
+  .tl li{grid-template-columns:1fr;gap:2px}
+  .pub{grid-template-columns:1fr;gap:4px}
+  .minor ul{columns:1}
+  section{padding:56px 0}
+  .hero .wrap{padding-top:48px;padding-bottom:64px}
+  .hero-grid{grid-template-columns:1fr;gap:24px}
+  .avatar{width:120px;height:120px;order:-1}
+  .wrap{padding:0 16px}
+}
+</style>
+</head>
+<body>
 
-	</body>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Ashwin Aravind</a>
+    <div class="links">
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <button id="theme" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="wrap hero-grid">
+    <div>
+    <div class="eyebrow">Researcher · Fujitsu Research</div>
+    <h1>Ashwin Aravind</h1>
+    <p class="lede">I work where <em>learning</em>, <em>optimization</em> and <em>control</em> meet — designing scalable, robust algorithms for autonomous systems that must act reliably under uncertainty.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://scholar.google.com/citations?user=GDAUT3wAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-6.8 9.2V16c0 1.7 3 3.5 6.8 3.5s6.8-1.8 6.8-3.5v-3.8L12 16l-6.8-3.8z"/></svg>
+        Google Scholar
+      </a>
+      <a class="btn" href="https://www.linkedin.com/in/ashwin-aravind-0302729b/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg>
+        LinkedIn
+      </a>
+      <a class="btn" href="#contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+        Email
+      </a>
+    </div>
+    </div>
+    <img class="avatar" src="images/avatar.jpg" alt="Portrait of Ashwin Aravind" width="220" height="220">
+  </div>
+</header>
+
+<main>
+
+<section id="research">
+  <div class="wrap sec-head">
+    <div><span class="sec-num">01</span><h2>Research</h2></div>
+    <div>
+      <div class="prose">
+        <p>I am a researcher at Fujitsu Research, Japan. I completed my M.Tech + PhD dual degree in Systems and Control Engineering at IIT Bombay, advised by Prof. Debasish Chatterjee and in collaboration with Prof. Ashish Cherukuri (University of Groningen).</p>
+        <p>My PhD focused on tractable algorithms for <strong>convex semi-infinite programs</strong> — problems that arise naturally in robust and distributionally robust control — with both centralized and distributed methods suited to decentralized implementation. I have also worked on <strong>learning-based control</strong> for systems with uncertain dynamics, including a cross-apprenticeship learning framework and the use of Moreau envelopes to bridge model-based and model-free reinforcement learning.</p>
+        <p>Looking ahead, I'm interested in real-time optimization and learning-based controllers for cooperative robot teams, autonomous vehicles and intelligent infrastructure: methods grounded in rigorous theory that are also computationally viable in the real world. This work has been enriched by research visits to Rice University, Kyoto University and Fujitsu.</p>
+      </div>
+      <div class="themes">
+        <div class="theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="19" r="2"/><path d="M7 6h10M6 8l5 9M18 8l-5 9"/></svg>
+          <h3>Distributed optimization</h3>
+          <p>First-order methods over time-varying networks with low computation and communication cost.</p>
+        </div>
+        <div class="theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+          <h3>Robust &amp; optimal control</h3>
+          <p>Semi-infinite programming for robust, sparse and distributionally robust control and MPC.</p>
+        </div>
+        <div class="theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 18c3-9 6-12 8-12s4 5 8 12"/><path d="M4 18h16"/><circle cx="12" cy="6" r="1.5" fill="currentColor"/></svg>
+          <h3>Learning for control</h3>
+          <p>Reinforcement and apprenticeship learning that generalizes across related tasks and environments.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap sec-head">
+    <div><span class="sec-num">02</span><h2>Publications</h2></div>
+    <div>
+      <div class="filters" role="group" aria-label="Filter publications">
+        <button aria-pressed="true" data-f="all">All</button>
+        <button aria-pressed="false" data-f="journal">Journal</button>
+        <button aria-pressed="false" data-f="conference">Conference</button>
+        <button aria-pressed="false" data-f="patent">Patent</button>
+        <button aria-pressed="false" data-f="preprint">In preparation</button>
+      </div>
+      <div id="pubs"></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap sec-head">
+    <div><span class="sec-num">03</span><h2>Experience &amp; Education</h2></div>
+    <div>
+      <div class="sub">Experience</div>
+      <ul class="tl">
+        <li><div class="when">Feb 2026 — now</div><div><h3>Researcher, Fujitsu Ltd.</h3><p>Fujitsu Research, Japan</p></div></li>
+        <li><div class="when">Aug — Sep 2025</div><div><h3>Research Intern, Fujitsu Ltd.</h3><p>Kawasaki, Japan</p></div></li>
+        <li><div class="when">Mar — Jul 2025</div><div><h3>Research Intern, Kyoto University</h3><p>Kyoto, Japan · India Young Researchers Invitation Program</p></div></li>
+        <li><div class="when">Oct 2023 — Jan 2024</div><div><h3>Research Intern, Rice University</h3><p>Houston, USA · Mehta Rice Engineering Scholar, with Prof. César A. Uribe</p></div></li>
+        <li><div class="when">May 2016 — Jul 2017</div><div><h3>Electrical Engineer, MRF Ltd.</h3><p>Where my interest in control systems began</p></div></li>
+      </ul>
+      <div class="sub">Education</div>
+      <ul class="tl">
+        <li><div class="when">2018 — 2026</div><div><h3>M.Tech + PhD, Systems and Control Engineering</h3><p>Indian Institute of Technology Bombay</p></div></li>
+        <li><div class="when">2011 — 2015</div><div><h3>B.Tech, Electrical and Electronics Engineering</h3><p>College of Engineering, Thiruvananthapuram, University of Kerala</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap sec-head">
+    <div><span class="sec-num">04</span><h2>Projects</h2></div>
+    <div>
+      <div class="cards">
+        <div class="card"><div class="meta">2019–2020 · M.Tech thesis</div><h3>Numerical solutions for discrete-time constrained optimal control</h3><p>Stochastic approximation for the two-point boundary value problems from Pontryagin's maximum principle, aimed at fast, real-time solvers.</p></div>
+        <div class="card"><div class="meta">2018–2020 · IIT Bombay</div><h3>ExoFly — personal flying device</h3><p>Coaxial-octacopter design; PD/PID translation and attitude control in MATLAB, EKF-based fusion of IMU and GPS.</p></div>
+        <div class="card"><div class="meta">2018–2019 · IIT Bombay</div><h3>Control moment gyroscope</h3><p>Lagrangian modelling and experimentally identified constants; PD/PID and sliding-mode control using Gao's reaching law.</p></div>
+        <div class="card"><div class="meta">2018–2019 · IIT Bombay</div><h3>Localization &amp; tracking of a wheeled robot</h3><p>Real-time pose control of a LEGO NXT unicycle with Vicon feedback; trajectory tracking in Frenet frame and chained form.</p></div>
+        <div class="card"><div class="meta">2014–2015 · B.Tech thesis</div><h3>Dynamic obstacle avoidance for a mobile robot</h3><p>Real-time LIDAR sensing with mean-shift clustering and a relative-velocity avoidance strategy.</p></div>
+        <div class="card"><div class="meta">Seminars</div><h3>Selected seminar topics</h3><p>Markov chain Monte Carlo in engineering; quadratic stability of LPV systems; time-optimal attitude control of a spinning missile; passive-radar target recognition.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="more">
+  <div class="wrap sec-head">
+    <div><span class="sec-num">05</span><h2>Talks, Teaching &amp; Awards</h2></div>
+    <div class="two">
+      <div>
+        <div class="sub">Awards &amp; fellowships</div>
+        <ul class="list">
+          <li><b>India Young Researchers Invitation Program</b> 2025 — research visit to Kyoto University</li>
+          <li><b>CDC 2024 student travel award</b> — Conference on Decision and Control, Milan</li>
+          <li><b>Mehta Rice Engineering Scholar</b> 2023 — research visit to Rice University</li>
+        </ul>
+        <div class="sub">Talks</div>
+        <ul class="list">
+          <li><b>Learning and Control Colloquium</b> 2024 — Distributed alternating gradient descent for convex SIPs over a network</li>
+          <li><b>SysCon Graduate Workshop</b> 2023 — Near-optimal solutions of convex SIPs via targeted sampling</li>
+        </ul>
+      </div>
+      <div>
+        <div class="sub">Teaching assistant · IIT Bombay</div>
+        <ul class="list">
+          <li><b>Introduction to Probability and Random Processes</b> — Autumn 2020, 2021, 2022</li>
+          <li><b>Signals and Feedback Systems</b> — Spring 2022</li>
+          <li><b>Systems and Control Engineering Lab</b> — Spring 2019</li>
+        </ul>
+        <div class="sub">Skills</div>
+        <ul class="list">
+          <li><b>Languages</b> — Python, C, C++</li>
+          <li><b>Tools</b> — MATLAB/Simulink, ROS, Mathematica, LaTeX</li>
+          <li><b>Spoken</b> — English, Hindi, Malayalam</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap sec-head">
+    <div><span class="sec-num">06</span><h2>Contact</h2></div>
+    <div>
+      <p class="prose" style="margin:0 0 20px"><span style="color:var(--muted)">I'm always happy to talk about optimization, control and learning — or potential collaborations.</span></p>
+      <div class="contact">
+        <a class="card" href="mailto:a.aravind@iitb.ac.in"><div class="meta">Email</div><h3>a.aravind@iitb.ac.in</h3></a>
+        <a class="card" href="https://scholar.google.com/citations?user=GDAUT3wAAAAJ&amp;hl=en" target="_blank" rel="noopener"><div class="meta">Publications</div><h3>Google Scholar</h3></a>
+        <a class="card" href="https://www.linkedin.com/in/ashwin-aravind-0302729b/" target="_blank" rel="noopener"><div class="meta">Professional</div><h3>LinkedIn</h3></a>
+        <a class="card" href="https://github.com/ashwinF" target="_blank" rel="noopener"><div class="meta">Code</div><h3>GitHub</h3></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer><div class="wrap">© <span id="yr"></span> Ashwin Aravind</div></footer>
+
+<script>
+// ---- publications data: edit here to add new papers ----
+const PUBS = [
+  {type:"journal", year:2026, title:"Sparse robust optimal control in continuous-time: a computationally viable approach",
+   authors:"S. Ganguly, A. Aravind, S. Das, M. Nagahara, D. Chatterjee", venue:"IEEE Transactions on Automatic Control, 2026",
+   abs:"A numerically viable algorithm for sparse robust optimal control of linear noisy systems in continuous time with an L1-type objective, enabling exact solutions; demonstrated on a spring–mass–damper system."},
+  {type:"journal", year:2025, title:"Distributed alternating gradient descent for convex semi-infinite programs over a network",
+   authors:"A. Aravind, D. Chatterjee, A. Cherukuri", venue:"IEEE Transactions on Automatic Control",
+   abs:"A first-order distributed method based on alternating gradient descent for convex SIPs over time-varying networks — low computation, communication and memory cost per iteration, and robust to communication failures."},
+  {type:"conference", year:2024, title:"A Moreau envelope approach for LQR meta-policy estimation",
+   authors:"A. Aravind, M. T. Toghani, C. A. Uribe", venue:"IEEE Conference on Decision and Control (CDC), Milan, 2024",
+   abs:"An augmented LQR cost regularized with Moreau envelopes induces personalization amenable to model-based and model-free policy-gradient methods; a first-order algorithm optimizes it in a client–server setup."},
+  {type:"conference", year:2024, title:"Data-driven distributionally robust MPC via semi-infinite semidefinite programming with application to financial models",
+   authors:"S. Das, S. Ganguly, A. Aravind, D. Chatterjee", venue:"MTNS 2024 · IFAC-PapersOnLine 58(17)",
+   abs:"A framework for exact solutions of convex SIPs applied to stochastic MPC with multiplicative disturbances, recast as distributionally robust MPC over ambiguity sets."},
+  {type:"journal", year:2023, title:"Cross apprenticeship learning framework: properties and solution approaches",
+   authors:"A. Aravind, D. Chatterjee, A. Cherukuri", venue:"IEEE Open Journal of Control Systems, vol. 2, 2023",
+   abs:"A framework that exploits data from a task performed in several related environments to estimate policies balancing performance in seen and unseen environments, with conditions under which this beats isolated learning."},
+  {type:"journal", year:2022, title:"Near-optimal solutions of convex semi-infinite programs via targeted sampling",
+   authors:"S. Das, A. Aravind, A. Cherukuri, D. Chatterjee", venue:"Annals of Operations Research 318(1), 2022",
+   abs:"Reformulates a convex SIP as an equivalent finitely constrained max–min problem with a plug-and-play solution approach, including a simulated-annealing algorithm with convergence guarantees."},
+  {type:"patent", year:2022, title:"Method and electronic device for global optimization to exact solutions of convex semi-infinite problems",
+   authors:"S. Das, A. Aravind, A. Cherukuri, D. Chatterjee", venue:"Indian Patent No. 512296"},
+  {type:"preprint", year:null, title:"Approximation-aware constrained feedback policy learning via neural networks and KANs",
+   authors:"G. Rajaraman, V. Mishra, A. Aravind, S. Ganguly, D. Chatterjee", venue:"In preparation",
+   abs:"Learning the MPC feedback map for constrained nonlinear systems with neural networks and Kolmogorov–Arnold networks, using offline data tailored to each approximation scheme, with extensive comparisons."}
+];
+const LABEL = {journal:"Journal", conference:"Conference", patent:"Patent", preprint:"Preprint"};
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function renderPubs(f){
+  document.getElementById("pubs").innerHTML = PUBS.filter(p => f==="all" || p.type===f).map(p => `
+    <article class="pub">
+      <div class="yr">${p.year ?? "—"}</div>
+      <div>
+        <h3><a href="https://scholar.google.com/scholar?q=${encodeURIComponent('"'+p.title+'"')}" target="_blank" rel="noopener">${esc(p.title)}</a></h3>
+        <p class="authors">${esc(p.authors).replace("A. Aravind","<b>A. Aravind</b>")}</p>
+        <p class="venue"><span class="tag">${LABEL[p.type]}</span>${esc(p.venue)}</p>
+        ${p.abs ? `<details><summary>Summary</summary><p>${esc(p.abs)}</p></details>` : ""}
+      </div>
+    </article>`).join("");
+}
+document.querySelectorAll(".filters button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".filters button").forEach(x => x.setAttribute("aria-pressed", x===b));
+  renderPubs(b.dataset.f);
+}));
+renderPubs("all");
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+// ---- theme toggle ----
+const root = document.documentElement;
+try { const t = localStorage.getItem("theme"); if (t) root.dataset.theme = t; } catch(e){}
+document.getElementById("theme").addEventListener("click", () => {
+  const dark = root.dataset.theme ? root.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+  try { localStorage.setItem("theme", root.dataset.theme); } catch(e){}
+  drawField();
+});
+
+// ---- hero: trajectories of a stable spiral (a nod to control theory) ----
+const cv = document.getElementById("field"), ctx = cv.getContext("2d");
+function drawField(){
+  const r = cv.getBoundingClientRect(), d = devicePixelRatio || 1;
+  cv.width = r.width*d; cv.height = r.height*d; ctx.setTransform(d,0,0,d,0,0);
+  ctx.clearRect(0,0,r.width,r.height);
+  ctx.strokeStyle = getComputedStyle(root).getPropertyValue("--field").trim();
+  ctx.lineWidth = 1;
+  const narrow = r.width < 760;
+  const cx = r.width*(narrow ? 0.85 : 0.78), cy = r.height*(narrow ? 0.9 : 0.5), s = Math.max(r.width, r.height);
+  // x' = A x with A = [[-a, -w],[w, -a]] -> log spirals into the equilibrium
+  for (let k=0; k<26; k++){
+    const th = k/26*Math.PI*2, R = s*0.75;
+    let x = Math.cos(th)*R, y = Math.sin(th)*R;
+    ctx.beginPath(); ctx.moveTo(cx+x, cy+y*0.62);
+    for (let i=0; i<3000; i++){
+      const dx = -0.18*x - y, dy = x - 0.18*y;
+      x += dx*0.012; y += dy*0.012;
+      ctx.lineTo(cx+x, cy+y*0.62);
+      if (Math.hypot(x,y) < 3) break;
+    }
+    ctx.stroke();
+  }
+  ctx.fillStyle = getComputedStyle(root).getPropertyValue("--accent").trim();
+  ctx.beginPath(); ctx.arc(cx, cy, 3.5, 0, Math.PI*2); ctx.fill();
+}
+drawField();
+addEventListener("resize", drawField);
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawField);
+</script>
+</body>
 </html>
