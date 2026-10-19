@@ -11,18 +11,18 @@
 <style>
 :root{
   --bg:#f7f5f0; --surface:#ffffff; --ink:#1b1d22; --muted:#5d6270; --faint:#8a8f9c;
-  --line:#e3dfd6; --accent:#1f5f8b; --accent-soft:#e3edf5; --field:rgba(31,95,139,.18);
+  --line:#e3dfd6; --accent:#1f5f8b; --accent-soft:#e3edf5;
   --serif:"Newsreader",Georgia,serif; --sans:"Inter",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#121418; --surface:#1a1d23; --ink:#e8e6e1; --muted:#a2a7b3; --faint:#737986;
-    --line:#2a2e36; --accent:#7fb6dd; --accent-soft:#1d2a36; --field:rgba(127,182,221,.16);
+    --line:#2a2e36; --accent:#7fb6dd; --accent-soft:#1d2a36;
   }
 }
 :root[data-theme="dark"]{
   --bg:#121418; --surface:#1a1d23; --ink:#e8e6e1; --muted:#a2a7b3; --faint:#737986;
-  --line:#2a2e36; --accent:#7fb6dd; --accent-soft:#1d2a36; --field:rgba(127,182,221,.16);
+  --line:#2a2e36; --accent:#7fb6dd; --accent-soft:#1d2a36;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
@@ -78,8 +78,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 @media (prefers-reduced-motion:reduce){ #side,#scrim{transition:none} html{scroll-behavior:auto} }
 
 /* hero */
-header.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-#field{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+header.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:linear-gradient(160deg,var(--accent-soft) 0%,color-mix(in srgb,var(--accent-soft) 35%,var(--bg)) 100%)}
 .hero .wrap{position:relative;padding-top:96px;padding-bottom:88px}
 .hero-grid{display:grid;grid-template-columns:1fr 220px;gap:48px;align-items:center}
 .avatar{width:220px;height:220px;border-radius:50%;object-fit:cover;object-position:50% 30%;border:4px solid var(--surface);box-shadow:0 0 0 1px var(--line),0 12px 32px rgba(0,0,0,.12)}
@@ -214,7 +213,6 @@ footer{padding:36px 0 48px;font-size:.82rem;color:var(--faint)}
 </nav>
 
 <header class="hero" id="top">
-  <canvas id="field" aria-hidden="true"></canvas>
   <div class="wrap hero-grid">
     <div>
     <div class="eyebrow">Researcher · Fujitsu Research</div>
@@ -440,7 +438,6 @@ document.querySelectorAll(".theme-toggle").forEach(b => b.addEventListener("clic
   const dark = root.dataset.theme ? root.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
   root.dataset.theme = dark ? "light" : "dark";
   try { localStorage.setItem("theme", root.dataset.theme); } catch(e){}
-  drawField();
 }));
 
 // ---- side panel: drawer on small screens, highlights the section in view ----
@@ -467,35 +464,6 @@ addEventListener("scroll", markActive, {passive:true});
 addEventListener("resize", markActive);
 markActive();
 
-// ---- hero: trajectories of a stable spiral (a nod to control theory) ----
-const cv = document.getElementById("field"), ctx = cv.getContext("2d");
-function drawField(){
-  const r = cv.getBoundingClientRect(), d = devicePixelRatio || 1;
-  cv.width = r.width*d; cv.height = r.height*d; ctx.setTransform(d,0,0,d,0,0);
-  ctx.clearRect(0,0,r.width,r.height);
-  ctx.strokeStyle = getComputedStyle(root).getPropertyValue("--field").trim();
-  ctx.lineWidth = 1;
-  const narrow = r.width < 760;
-  const cx = r.width*(narrow ? 0.85 : 0.78), cy = r.height*(narrow ? 0.9 : 0.5), s = Math.max(r.width, r.height);
-  // x' = A x with A = [[-a, -w],[w, -a]] -> log spirals into the equilibrium
-  for (let k=0; k<26; k++){
-    const th = k/26*Math.PI*2, R = s*0.75;
-    let x = Math.cos(th)*R, y = Math.sin(th)*R;
-    ctx.beginPath(); ctx.moveTo(cx+x, cy+y*0.62);
-    for (let i=0; i<3000; i++){
-      const dx = -0.18*x - y, dy = x - 0.18*y;
-      x += dx*0.012; y += dy*0.012;
-      ctx.lineTo(cx+x, cy+y*0.62);
-      if (Math.hypot(x,y) < 3) break;
-    }
-    ctx.stroke();
-  }
-  ctx.fillStyle = getComputedStyle(root).getPropertyValue("--accent").trim();
-  ctx.beginPath(); ctx.arc(cx, cy, 3.5, 0, Math.PI*2); ctx.fill();
-}
-drawField();
-addEventListener("resize", drawField);
-matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawField);
 </script>
 </body>
 </html>
