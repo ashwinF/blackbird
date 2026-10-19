@@ -36,11 +36,44 @@ nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 85%,
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
 .brand{font-family:var(--serif);font-size:1.2rem;color:var(--ink);font-weight:500}
 .brand:hover{text-decoration:none}
-.links{display:flex;gap:22px;align-items:center;font-size:.9rem}
-.links a{color:var(--muted)}
-.links a:hover{color:var(--ink);text-decoration:none}
-#theme{background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;width:34px;height:34px;cursor:pointer;display:grid;place-items:center}
-#theme:hover{color:var(--ink)}
+.icon-btn{background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;width:34px;height:34px;cursor:pointer;display:grid;place-items:center;flex:none}
+.icon-btn:hover{color:var(--ink);border-color:var(--faint)}
+#menu{display:none}
+
+/* side panel */
+#side{position:fixed;top:0;left:0;bottom:0;width:248px;z-index:30;background:var(--surface);border-right:1px solid var(--line);display:flex;flex-direction:column;padding:28px 20px 20px;overflow-y:auto}
+.side-id{display:flex;align-items:center;gap:12px;color:var(--ink);padding:0 8px 24px;border-bottom:1px solid var(--line)}
+.side-id:hover{text-decoration:none}
+.side-id img{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:50% 30%}
+.side-id b{display:block;font-family:var(--serif);font-weight:500;font-size:1.1rem;line-height:1.2}
+.side-id span{font-size:.78rem;color:var(--muted)}
+.side-nav{list-style:none;margin:20px 0 0;padding:0;flex:1}
+.side-nav a{display:flex;align-items:baseline;gap:12px;padding:8px;border-radius:8px;color:var(--muted);font-size:.93rem;position:relative}
+.side-nav a:hover{text-decoration:none;color:var(--ink);background:var(--bg)}
+.side-nav a i{font:normal .72rem var(--mono);color:var(--faint);width:18px}
+.side-nav a.active{color:var(--ink);background:var(--accent-soft);font-weight:500}
+.side-nav a.active i{color:var(--accent)}
+.side-foot{display:flex;gap:8px;align-items:center;padding-top:16px;border-top:1px solid var(--line)}
+.side-foot a{color:var(--muted)}
+.side-foot a:hover{color:var(--ink)}
+.side-foot svg{width:16px;height:16px}
+.side-foot .icon-btn:last-child{margin-left:auto}
+#scrim{position:fixed;inset:0;z-index:25;background:rgba(10,12,16,.4);opacity:0;pointer-events:none;transition:opacity .2s}
+
+/* wide screens: panel is always visible, top bar goes away */
+@media (min-width:1100px){
+  body{padding-left:248px}
+  nav{display:none}
+  html{scroll-padding-top:24px}
+}
+/* narrower screens: panel becomes a slide-out drawer */
+@media (max-width:1099px){
+  #side{transform:translateX(-100%);transition:transform .25s ease;box-shadow:0 0 40px rgba(0,0,0,.2)}
+  body.open #side{transform:none}
+  body.open #scrim{opacity:1;pointer-events:auto}
+  #menu{display:grid}
+}
+@media (prefers-reduced-motion:reduce){ #side,#scrim{transition:none} html{scroll-behavior:auto} }
 
 /* hero */
 header.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
@@ -127,10 +160,8 @@ details p{margin:8px 0 0;font-size:.92rem;color:var(--muted);max-width:640px}
 footer{padding:36px 0 48px;font-size:.82rem;color:var(--faint)}
 
 @media (max-width:760px){
-  .links a{display:none}
   .sec-head{grid-template-columns:1fr;gap:20px}
   .themes,.cards,.two,.contact{grid-template-columns:1fr}
-
   .tl li{grid-template-columns:1fr;gap:2px}
   .pub{grid-template-columns:1fr;gap:4px}
   .minor ul{columns:1}
@@ -144,19 +175,40 @@ footer{padding:36px 0 48px;font-size:.82rem;color:var(--faint)}
 </head>
 <body>
 
+<aside id="side" aria-label="Site navigation">
+  <a class="side-id" href="#top">
+    <img src="images/avatar.jpg" alt="" width="44" height="44">
+    <div><b>Ashwin Aravind</b><span>Researcher · Fujitsu</span></div>
+  </a>
+  <ul class="side-nav">
+    <li><a href="#top"><i>00</i>About</a></li>
+    <li><a href="#research"><i>01</i>Research</a></li>
+    <li><a href="#publications"><i>02</i>Publications</a></li>
+    <li><a href="#experience"><i>03</i>Experience</a></li>
+    <li><a href="#projects"><i>04</i>Projects</a></li>
+    <li><a href="#more"><i>05</i>Talks &amp; Awards</a></li>
+    <li><a href="#contact"><i>06</i>Contact</a></li>
+  </ul>
+  <div class="side-foot">
+    <a class="icon-btn" href="https://scholar.google.com/citations?user=GDAUT3wAAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-6.8 9.2V16c0 1.7 3 3.5 6.8 3.5s6.8-1.8 6.8-3.5v-3.8L12 16l-6.8-3.8z"/></svg></a>
+    <a class="icon-btn" href="https://www.linkedin.com/in/ashwin-aravind-0302729b/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg></a>
+    <a class="icon-btn" href="https://github.com/ashwinF" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg></a>
+    <button class="icon-btn theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+  </div>
+</aside>
+<div id="scrim"></div>
+
 <nav>
   <div class="wrap">
-    <a class="brand" href="#top">Ashwin Aravind</a>
-    <div class="links">
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-      <button id="theme" aria-label="Toggle dark mode" title="Toggle theme">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    <div style="display:flex;align-items:center;gap:12px">
+      <button id="menu" class="icon-btn" aria-label="Open navigation" aria-controls="side" aria-expanded="false">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
+      <a class="brand" href="#top">Ashwin Aravind</a>
     </div>
+    <button class="icon-btn theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
   </div>
 </nav>
 
@@ -383,12 +435,36 @@ document.querySelectorAll(".js-mail").forEach(a => a.addEventListener("click", e
 // ---- theme toggle ----
 const root = document.documentElement;
 try { const t = localStorage.getItem("theme"); if (t) root.dataset.theme = t; } catch(e){}
-document.getElementById("theme").addEventListener("click", () => {
+document.querySelectorAll(".theme-toggle").forEach(b => b.addEventListener("click", () => {
   const dark = root.dataset.theme ? root.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
   root.dataset.theme = dark ? "light" : "dark";
   try { localStorage.setItem("theme", root.dataset.theme); } catch(e){}
   drawField();
-});
+}));
+
+// ---- side panel: drawer on small screens, highlights the section in view ----
+const menuBtn = document.getElementById("menu");
+function setDrawer(open){
+  document.body.classList.toggle("open", open);
+  menuBtn.setAttribute("aria-expanded", open);
+}
+menuBtn.addEventListener("click", () => setDrawer(!document.body.classList.contains("open")));
+document.getElementById("scrim").addEventListener("click", () => setDrawer(false));
+document.querySelectorAll("#side a[href^='#']").forEach(a => a.addEventListener("click", () => setDrawer(false)));
+addEventListener("keydown", e => { if (e.key === "Escape") setDrawer(false); });
+
+const navLinks = [...document.querySelectorAll(".side-nav a")];
+const targets = navLinks.map(a => document.querySelector(a.getAttribute("href")));
+function markActive(){
+  const y = innerHeight * 0.35;
+  let current = targets[0];
+  for (const t of targets) if (t.getBoundingClientRect().top <= y) current = t;
+  if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) current = targets[targets.length - 1];
+  navLinks.forEach((a, i) => a.classList.toggle("active", targets[i] === current));
+}
+addEventListener("scroll", markActive, {passive:true});
+addEventListener("resize", markActive);
+markActive();
 
 // ---- hero: trajectories of a stable spiral (a nod to control theory) ----
 const cv = document.getElementById("field"), ctx = cv.getContext("2d");
