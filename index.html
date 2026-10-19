@@ -181,7 +181,7 @@ footer{padding:36px 0 48px;font-size:.82rem;color:var(--faint)}
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg>
         LinkedIn
       </a>
-      <a class="btn" href="#contact">
+      <a class="btn js-mail" href="#contact">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
         Email
       </a>
@@ -198,7 +198,7 @@ footer{padding:36px 0 48px;font-size:.82rem;color:var(--faint)}
     <div><span class="sec-num">01</span><h2>Research</h2></div>
     <div>
       <div class="prose">
-        <p>I am a researcher at Fujitsu Research, Japan. I completed my M.Tech + PhD dual degree in Systems and Control Engineering at IIT Bombay, advised by Prof. Debasish Chatterjee and in collaboration with Prof. Ashish Cherukuri (University of Groningen).</p>
+        <p>I am a researcher at Fujitsu Research, Japan. I completed my M.Tech + PhD dual degree in Systems and Control Engineering at IIT Bombay, advised by Prof. <a href="https://www.sc.iitb.ac.in/~chatterjee/master/homepage/index.html" target="_blank" rel="noopener">Debasish Chatterjee</a> and in collaboration with Prof. <a href="https://ashish-rug.github.io/" target="_blank" rel="noopener">Ashish Cherukuri</a> (University of Groningen).</p>
         <p>My PhD focused on tractable algorithms for <strong>convex semi-infinite programs</strong> — problems that arise naturally in robust and distributionally robust control — with both centralized and distributed methods suited to decentralized implementation. I have also worked on <strong>learning-based control</strong> for systems with uncertain dynamics, including a cross-apprenticeship learning framework and the use of Moreau envelopes to bridge model-based and model-free reinforcement learning.</p>
         <p>Looking ahead, I'm interested in real-time optimization and learning-based controllers for cooperative robot teams, autonomous vehicles and intelligent infrastructure: methods grounded in rigorous theory that are also computationally viable in the real world. This work has been enriched by research visits to Rice University, Kyoto University and Fujitsu.</p>
       </div>
@@ -247,8 +247,8 @@ footer{padding:36px 0 48px;font-size:.82rem;color:var(--faint)}
       <ul class="tl">
         <li><div class="when">Feb 2026 — now</div><div><h3>Researcher, Fujitsu Ltd.</h3><p>Fujitsu Research, Japan</p></div></li>
         <li><div class="when">Aug — Sep 2025</div><div><h3>Research Intern, Fujitsu Ltd.</h3><p>Kawasaki, Japan</p></div></li>
-        <li><div class="when">Mar — Jul 2025</div><div><h3>Research Intern, Kyoto University</h3><p>Kyoto, Japan · India Young Researchers Invitation Program</p></div></li>
-        <li><div class="when">Oct 2023 — Jan 2024</div><div><h3>Research Intern, Rice University</h3><p>Houston, USA · Mehta Rice Engineering Scholar, with Prof. César A. Uribe</p></div></li>
+        <li><div class="when">Mar — Jul 2025</div><div><h3>Research Intern, Kyoto University</h3><p>Kyoto, Japan · India Young Researchers Invitation Program, with Prof. <a href="https://www.ids.sys.i.kyoto-u.ac.jp/~ohtsuka/" target="_blank" rel="noopener">Toshiyuki Ohtsuka</a></p></div></li>
+        <li><div class="when">Oct 2023 — Jan 2024</div><div><h3>Research Intern, Rice University</h3><p>Houston, USA · Mehta Rice Engineering Scholar, with Prof. <a href="https://cauribe.rice.edu/" target="_blank" rel="noopener">César A. Uribe</a></p></div></li>
         <li><div class="when">May 2016 — Jul 2017</div><div><h3>Electrical Engineer, MRF Ltd.</h3><p>Where my interest in control systems began</p></div></li>
       </ul>
       <div class="sub">Education</div>
@@ -317,7 +317,7 @@ footer{padding:36px 0 48px;font-size:.82rem;color:var(--faint)}
     <div>
       <p class="prose" style="margin:0 0 20px"><span style="color:var(--muted)">I'm always happy to talk about optimization, control and learning — or potential collaborations.</span></p>
       <div class="contact">
-        <a class="card" href="mailto:ashwinaravind1[at]gmail[dot]com"><div class="meta">Email</div><h3>ashwinaravind1[at]gmail[dot]com</h3></a>
+        <a class="card js-mail" href="#contact"><div class="meta">Email</div><h3>ashwinaravind1[at]gmail[dot]com</h3></a>
         <a class="card" href="https://scholar.google.com/citations?user=GDAUT3wAAAAJ&amp;hl=en" target="_blank" rel="noopener"><div class="meta">Publications</div><h3>Google Scholar</h3></a>
         <a class="card" href="https://www.linkedin.com/in/ashwin-aravind-0302729b/" target="_blank" rel="noopener"><div class="meta">Professional</div><h3>LinkedIn</h3></a>
         <a class="card" href="https://github.com/ashwinF" target="_blank" rel="noopener"><div class="meta">Code</div><h3>GitHub</h3></a>
@@ -377,6 +377,12 @@ document.querySelectorAll(".filters button").forEach(b => b.addEventListener("cl
 }));
 renderPubs("all");
 document.getElementById("yr").textContent = new Date().getFullYear();
+
+// ---- email: assembled on click so the address is not in the HTML for scrapers ----
+document.querySelectorAll(".js-mail").forEach(a => a.addEventListener("click", e => {
+  e.preventDefault();
+  location.href = "mailto:" + ["ashwinaravind1", "gmail.com"].join("@");
+}));
 
 // ---- theme toggle ----
 const root = document.documentElement;
