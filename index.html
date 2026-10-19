@@ -72,11 +72,6 @@ h2{font-family:var(--serif);font-weight:400;font-size:1.9rem;margin:0;line-heigh
 .theme p{margin:0;color:var(--muted);font-size:.92rem}
 .theme svg{width:28px;height:28px;color:var(--accent)}
 
-/* news / now */
-.now{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:28px}
-.now div{background:var(--surface);padding:18px}
-.now b{display:block;font-family:var(--serif);font-weight:500;font-size:1.6rem;line-height:1.1}
-.now span{font-size:.82rem;color:var(--muted)}
 
 /* publications */
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
@@ -135,7 +130,7 @@ footer{padding:36px 0 48px;font-size:.82rem;color:var(--faint)}
   .links a{display:none}
   .sec-head{grid-template-columns:1fr;gap:20px}
   .themes,.cards,.two,.contact{grid-template-columns:1fr}
-  .now{grid-template-columns:repeat(2,1fr)}
+
   .tl li{grid-template-columns:1fr;gap:2px}
   .pub{grid-template-columns:1fr;gap:4px}
   .minor ul{columns:1}
@@ -289,6 +284,7 @@ footer{padding:36px 0 48px;font-size:.82rem;color:var(--faint)}
         </ul>
         <div class="sub">Talks</div>
         <ul class="list">
+          <li><b>IEEE Conference on Decision and Control (CDC)</b> 2024, Milan — A Moreau envelope approach for LQR meta-policy estimation</li>
           <li><b>Learning and Control Colloquium</b> 2024 — Distributed alternating gradient descent for convex SIPs over a network</li>
           <li><b>SysCon Graduate Workshop</b> 2023 — Near-optimal solutions of convex SIPs via targeted sampling</li>
         </ul>
